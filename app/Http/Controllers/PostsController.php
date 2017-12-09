@@ -84,7 +84,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post =  Post::find($id);
+        return view('posts.show')->with('post', $post);
     }
 
     /**
@@ -163,7 +164,7 @@ class PostsController extends Controller
         }
         if($post->cover_image != 'noimage.jpg'){
 
-            Storage::delete('public/cover_image/'.$post->cover_image);
+            Storage::delete('public/cover_images/'.$post->cover_image);
         }
 
         $post->delete();
